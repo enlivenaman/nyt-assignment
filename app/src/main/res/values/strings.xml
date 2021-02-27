@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Sample Project</string>
+    <string name="app_name">NYT Assignment</string>
 
     <string name="network_connection_error">Internet connection lost, please retry again</string>
     <string name="network_default_error">Something wrong happened, please retry again</string>
@@ -8,4 +8,5 @@
     </string>
     <string name="server_connection_error">Not able to connect, please retry again</string>
     <string name="network_login_again">Please log in again</string>
+    <string name="search">Search</string>
 </resources>
