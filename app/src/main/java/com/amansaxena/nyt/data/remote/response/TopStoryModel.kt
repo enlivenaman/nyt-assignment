@@ -1,4 +1,4 @@
-package com.amansaxena.nyt.data.model
+package com.amansaxena.nyt.data.remote.response
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName

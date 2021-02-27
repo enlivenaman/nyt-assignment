@@ -6,7 +6,6 @@ import android.content.SharedPreferences
 import com.amansaxena.nyt.MainApplication
 import com.amansaxena.nyt.data.local.db.DatabaseService
 import com.amansaxena.nyt.data.remote.NetworkService
-import com.amansaxena.nyt.data.repository.UserRepository
 import com.amansaxena.nyt.di.ApplicationContext
 import com.amansaxena.nyt.di.module.ApplicationModule
 import com.amansaxena.nyt.util.network.NetworkHelper
@@ -41,18 +40,6 @@ interface ApplicationComponent {
     fun getSharedPreferences(): SharedPreferences
 
     fun getNetworkHelper(): NetworkHelper
-
-    /**---------------------------------------------------------------------------
-     * Dagger will internally create UserRepository instance using constructor injection.
-     * Dependency through constructor
-     * UserRepository ->
-     *  [NetworkService -> Nothing is required],
-     *  [DatabaseService -> Nothing is required],
-     *  [UserPreferences -> [SharedPreferences -> provided by the function provideSharedPreferences in ApplicationModule class]]
-     * So, Dagger will be able to create an instance of UserRepository by its own using constructor injection
-     *---------------------------------------------------------------------------------
-     */
-    fun getUserRepository(): UserRepository
 
     fun getSchedulerProvider(): SchedulerProvider
 

@@ -1,6 +1,5 @@
 package com.amansaxena.nyt.di.component
 
-import com.amansaxena.nyt.MainApplication
 import com.amansaxena.nyt.di.ActivityScope
 import com.amansaxena.nyt.di.module.ActivityModule
 import com.amansaxena.nyt.ui.MainActivity

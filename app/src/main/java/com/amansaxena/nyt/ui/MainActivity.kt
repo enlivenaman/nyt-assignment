@@ -4,33 +4,39 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.amansaxena.nyt.R
+import com.amansaxena.nyt.di.component.ActivityComponent
+import com.amansaxena.nyt.ui.base.BaseActivity
+import com.amansaxena.nyt.viewmodel.AppViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.content_main.*
 import javax.inject.Inject
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity<AppViewModel>() {
 
     @Inject
+    lateinit var linearLayoutManager: LinearLayoutManager
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        updateToolbar()
+    @Inject
+    lateinit var adapter: TopStoryAdapter
 
-        initView()
+    override fun provideLayoutId(): Int = R.layout.activity_main
+
+    override fun injectDependencies(activityComponent: ActivityComponent) {
+        activityComponent.inject(this)
     }
 
-    private fun updateToolbar() {
-        supportActionBar?.apply {
-            setDisplayHomeAsUpEnabled(true)
-            setDisplayShowHomeEnabled(true)
-        }
-        setSupportActionBar(toolbar)
+    override fun setupObservers() {
+        viewModel.getTopStories().observe(this, Observer {
+            it?.run {  }
+        })
     }
-
-    private fun initView() {
-
+    override fun setupView(savedInstanceState: Bundle?) {
+        recycler_view.layoutManager = linearLayoutManager
+        recycler_view.adapter = adapter
     }
 }

@@ -1,9 +1,6 @@
 package com.amansaxena.nyt.data.remote
 
-import com.amansaxena.nyt.BuildConfig
-import com.amansaxena.nyt.data.model.TopStoryModelResponse
-import com.amansaxena.nyt.data.remote.request.DummyRequest
-import com.amansaxena.nyt.data.remote.response.DummyResponse
+import com.amansaxena.nyt.data.remote.response.TopStoryModelResponse
 import io.reactivex.Single
 import retrofit2.http.*
 import javax.inject.Singleton

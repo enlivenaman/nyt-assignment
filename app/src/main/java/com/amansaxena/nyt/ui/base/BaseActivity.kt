@@ -10,6 +10,7 @@ import com.amansaxena.nyt.di.component.ActivityComponent
 import com.amansaxena.nyt.di.component.DaggerActivityComponent
 import com.amansaxena.nyt.di.module.ActivityModule
 import com.amansaxena.nyt.util.display.Toaster
+import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
 /**
@@ -27,7 +28,16 @@ abstract class BaseActivity<VM : BaseViewModel> : AppCompatActivity() {
         setContentView(provideLayoutId())
         setupObservers()
         setupView(savedInstanceState)
+        updateToolbar()
         viewModel.onCreate()
+    }
+
+    private fun updateToolbar() {
+        supportActionBar?.apply {
+            setDisplayHomeAsUpEnabled(true)
+            setDisplayShowHomeEnabled(true)
+        }
+        setSupportActionBar(toolbar)
     }
 
     private fun buildActivityComponent() =

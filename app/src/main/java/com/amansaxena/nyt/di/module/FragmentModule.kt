@@ -2,6 +2,7 @@ package com.amansaxena.nyt.di.module
 
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.amansaxena.nyt.data.repository.NytApiRepository
 import com.amansaxena.nyt.ui.base.BaseFragment
 import com.amansaxena.nyt.util.ViewModelProviderFactory
 import com.amansaxena.nyt.util.network.NetworkHelper
@@ -21,11 +22,12 @@ class FragmentModule(private val fragment: BaseFragment<*>) {
     fun provideDummiesViewModel(
         schedulerProvider: SchedulerProvider,
         compositeDisposable: CompositeDisposable,
-        networkHelper: NetworkHelper
+        networkHelper: NetworkHelper,
+        nytApiRepository: NytApiRepository
     ): AppViewModel =
         ViewModelProviders.of(fragment,
             ViewModelProviderFactory(AppViewModel::class) {
-                AppViewModel(schedulerProvider, compositeDisposable, networkHelper)
+                AppViewModel(schedulerProvider, compositeDisposable, networkHelper, nytApiRepository)
             }
         ).get(AppViewModel::class.java)
 
