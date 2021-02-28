@@ -32,7 +32,9 @@ class MainActivity : BaseActivity<AppViewModel>() {
 
     override fun setupObservers() {
         viewModel.getTopStories().observe(this, Observer {
-            it?.run {  }
+            it?.run {
+                adapter.appendData(this)
+            }
         })
     }
     override fun setupView(savedInstanceState: Bundle?) {

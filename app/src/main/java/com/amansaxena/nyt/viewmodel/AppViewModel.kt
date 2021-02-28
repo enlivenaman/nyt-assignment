@@ -28,7 +28,7 @@ class AppViewModel(
         if (topStoryLiveData.value == null && checkInternetConnectionWithMessage()) {
             topStoryLiveData.postValue(Resource.loading())
             compositeDisposable.add(
-                nytApiRepository.fetchTopStories("art")
+                nytApiRepository.fetchTopStories("arts")
                     .subscribeOn(schedulerProvider.io())
                     .subscribe(
                         { topStoryLiveData.postValue(Resource.success(it)) },

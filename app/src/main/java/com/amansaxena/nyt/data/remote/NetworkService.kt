@@ -11,6 +11,6 @@ interface NetworkService {
     @GET(Endpoints.TOPSTORY)
     fun doTopStoryCall(
         @Path("section") section: String,
-        @Path("apikey") apikey: String = Networking.API_KEY
+        @Query("api-key") apikey: String
     ): Single<TopStoryModelResponse>
 }
